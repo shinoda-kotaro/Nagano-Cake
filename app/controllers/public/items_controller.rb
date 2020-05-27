@@ -1,4 +1,4 @@
-class Public::ItemsController < ApplicationController
+class Public::ItemsController < Public::Base
   def top
 
   end
