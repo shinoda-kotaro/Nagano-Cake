@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
   devise_for :end_users , controllers: {
-    registrations: "public/registrations",
-    sessions: "public/sessions"
+    registrations: "publics/registrations",
+    sessions: "publics/sessions"
   }
   devise_for :admins , controllers: {
-    sessions: "admin/sessions"
+    sessions: "admins/sessions"
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root to: "public/items#top"
-  get "/items" , to: "public/items#index" , as: "public_items"
-  get "/items/:id" , to: "public/items#show" , as: "public_item"
+  root to: "publics/items#top"
+  get "/items" , to: "publics/items#index" , as: "public_items"
+  get "/items/:id" , to: "publics/items#show" , as: "public_item"
 
-  get "/end_users/mypage" , to: "public/end_users#show"
+  get "/end_users/mypage" , to: "publics/end_users#show"
 
-  namespace :admin do
+  namespace :admins do
     root to: "top#top"
   end
 end
