@@ -9,6 +9,13 @@
 
 <body>
 
+  <header>
+
+  <div class="header_container">
+
+  <div class="header_logo">
+    <%= link_to "LOGO", admin_root_path %>
+  </div>
   
   <% if admin_signed_in? %>
 
@@ -31,7 +38,10 @@
   <% else %>
     
   <% end %>
+
+  </div>
   
+  </header>
 
   <% content_for :content do %>
   <%= yield %>
