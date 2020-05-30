@@ -2,13 +2,37 @@
 <html>
 
 <head>
-  <title>namespace - admin</title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
+
+  
+  <% if admin_signed_in? %>
+
+    <div class="header_menu">
+      <%= link_to "商品一覧", admins_root_path %>
+    </div>
+    <div class="header_menu">
+      <%= link_to "会員一覧", admins_root_path %>
+    </div>
+    <div class="header_menu">
+      <%= link_to "注文履歴一覧", admins_root_path %>
+    </div>
+    <div class="header_menu">
+      <%= link_to "ジャンル一覧", admins_root_path %>
+    </div>
+    <div class="header_menu">
+      <%= link_to "ログアウト", destroy_admin_session_path , method: :delete %>
+    </div>
+
+  <% else %>
+    
+  <% end %>
+  
+
   <% content_for :content do %>
   <%= yield %>
   <% end %>
