@@ -27,6 +27,9 @@
 
     <% else %>
 
+      <div class="header_menu header_welcome">
+        ようこそ、<%= current_end_user.first_name %>さん！
+      </div>
       <div class="header_menu">
         <%= link_to "マイページ", end_users_mypage_path %>
       </div>
