@@ -1,1 +1,7 @@
 <h1>Mypage</h1>
+
+<% if @end_user.is_unsubscribed? %>
+<h1>会員です</h1>
+<% else %>
+<h1>会員ではないです</h1>
+<% end %>
