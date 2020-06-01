@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   
   namespace :admins do
     root to: "top#top"
+    get "/end_users" , to: "end_users#index"
   end
 end
