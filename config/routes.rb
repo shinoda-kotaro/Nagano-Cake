@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :end_users , controllers: {
     registrations: "publics/registrations",
-    sessions: "publics/sessions"
+    sessions: "publics/sessions",
   }
   devise_for :admins , controllers: {
     sessions: "admins/sessions"
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get "/items/:id" , to: "publics/items#show" , as: "public_item"
 
   get "/end_users/mypage" , to: "publics/end_users#show"
-
+  
   namespace :admins do
     root to: "top#top"
   end

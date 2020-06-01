@@ -1,7 +1,48 @@
-<h1>Mypage</h1>
-
-<% if @end_user.is_unsubscribed? %>
-<h1>会員です</h1>
-<% else %>
-<h1>会員ではないです</h1>
-<% end %>
+<div class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6">
+    <div class="mypage_title">
+      <h1>マイページ</h1>
+    </div>
+    <p>登録情報
+      <%=link_to "編集する", edit_end_user_registration_path , class: "btn btn-default edit_end_user_btn" %>
+      <%=link_to "パスワードを変更する", edit_end_user_password_path , class: "btn btn-default edit_end_user_password_btn" %>
+    </p>
+    <table class="table table-striped mypage-table">
+      <tr>
+        <td>氏名</td>
+        <td><%= @end_user.first_name %> <%= @end_user.under_name %></td>
+      </tr>
+      <tr>
+        <td>カナ</td>
+        <td><%= @end_user.kana_first_name %> <%= @end_user.kana_under_name %></td>
+      </tr>
+      <tr>
+        <td>郵便番号</td>
+        <td><%= @end_user.postcode %></td>
+      </tr>
+      <tr>
+        <td>住所</td>
+        <td><%= @end_user.address %></td>
+      </tr>
+      <tr>
+        <td>電話番号</td>
+        <td><%= @end_user.phone_number %></td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td><%= @end_user.email %></td>
+      </tr>
+    </table>
+    <div class="">
+      <p>配送先
+        <%=link_to "一覧を見る", end_users_mypage_path , class: "btn btn-default edit_end_user_btn" %>
+      </p>
+    </div>
+    <div class="">
+      <p>注文履歴
+        <%=link_to "一覧を見る", end_users_mypage_path , class: "btn btn-default edit_end_user_btn" %>
+      </p>
+    </div>
+  </div>
+</div>
