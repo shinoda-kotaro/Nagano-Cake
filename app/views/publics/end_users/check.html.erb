@@ -1,1 +1,24 @@
-<h1>本当に退会しますか？</h1>
+<div class="col-sm-6 col-sm-offset-3">
+  <h1 class="text-center">本当に退会しますか？</h1>
+
+  <p class="text-center check_sentence">
+    退会すると、会員登録情報や<br>
+    これまでの購入履歴を確認できなくなります。<br>
+    退会する場合は、「退会する」をクリックしてください。
+  </p>
+  <div>
+    <table class="taikai_table">
+      <tr class="text-center">
+        <td>
+          <%= link_to "退会しない", end_users_mypage_path , class: "btn btn-primary" %>
+        </td>
+        <td>
+          <%= form_for @end_user , url: {action: "withdrawal"} , html: { class: "form-inline" } do |f| %>
+          <%= f.hidden_field :is_unsubscribed,  :value => false %>
+          <%= f.submit "退会する" , class: "btn btn-danger" , data: { confirm: '退会しますか?' } %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
