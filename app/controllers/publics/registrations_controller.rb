@@ -4,6 +4,8 @@ class Publics::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  layout 'public'
+
   # GET /resource/sign_up
   # def new
   #   super
@@ -15,14 +17,15 @@ class Publics::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
+  def edit
   #   super
-  # end
+  end
 
   # PUT /resource
-  # def update
+  def update
   #   super
-  # end
+    redirect_to end_users_mypage_path
+  end
 
   # DELETE /resource
   # def destroy
@@ -38,7 +41,7 @@ class Publics::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -59,4 +62,9 @@ class Publics::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+  
 end
