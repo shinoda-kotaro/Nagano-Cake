@@ -5,11 +5,12 @@ class Admins::ItemsController < Admins::Base
   end
 
   def new
-    
+    @item = Item.new
+    @genres = Genre.where(is_effective: true)
   end
   
   def create
-    
+    @item = Item.find(params[:id])
   end
   
   def show

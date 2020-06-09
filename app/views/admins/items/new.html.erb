@@ -1,0 +1,59 @@
+<div class="col-sm-6 col-sm-offset-3">
+  <h1>商品新規登録</h1>
+
+  <%= form_for @item do |f| %>
+  <%= render 'layouts/error_messages', f: f.item %>
+
+  <table class="table">
+    <tr>
+      <td>商品名</td>
+      <td>
+        <div class="form-group">
+          <%= f.label :name , "必須" , class: "sr-only" %>
+          <%= f.text_field :name, class: "form-control" , autofocus: true, autocomplete: "商品名" %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>商品説明</td>
+      <td>
+        <div class="form-group">
+          <%= f.label :description , "必須" , class: "sr-only" %>
+          <%= f.text_area :kana_first_name, rows: "3" ,class: "form-control" ,  autocomplete: "商品説明" %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>ジャンル</td>
+      <td>
+        <div class="form-group">
+          <%= f.select :genre_id, @genre.all.collect {|p| [ p.name, p.id ]} , { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>税抜き価格</td>
+      <td>
+        <div class="form-group">
+          <%= f.label :price , "必須" , class: "sr-only" %>
+          <%= f.number_field :price, class: "form-control" , autocomplete: "税抜き価格" %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>販売ステータス</td>
+      <td>
+        <div class="form-group">
+          <%= f.select :is_sale,  {'販売中': true, '販売停止中': false}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="form-group">
+    <%= f.submit '新規登録', class: 'btn btn-primary' %>
+  </div>
+
+  <% end %>
+
+</div>
