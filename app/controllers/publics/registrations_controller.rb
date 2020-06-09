@@ -18,13 +18,18 @@ class Publics::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
-  #   super
+    super
   end
 
   # PUT /resource
   def update
-  #   super
-    redirect_to end_users_mypage_path
+    super
+  #end_user = EndUser.find(current_end_user.id)
+  #if end_user.update(end_user_params)
+  #  redirect_to end_users_mypage_path
+  #else
+  #  render "edit"
+  #end
   end
 
   # DELETE /resource
@@ -66,5 +71,13 @@ class Publics::RegistrationsController < Devise::RegistrationsController
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
+
+  def after_update_path_for(resource)
+    end_users_mypage_path
+  end
+
+  #def end_user_params
+  #  params.require(:end_user).permit(:first_name , :under_name , :kana_first_name , :kana_under_name , :postcode , :address , :phone_number , :email)
+  #end
   
 end

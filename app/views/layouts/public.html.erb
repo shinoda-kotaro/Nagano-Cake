@@ -29,7 +29,7 @@
             <ul class="nav navbar-nav navbar-right">
               <% if !end_user_signed_in? %>
               <li class="nav-item">
-                <%= link_to "商品一覧", root_path ,class: "btn btn-default navbar-btn" %>
+                <%= link_to "商品一覧", end_users_items_path ,class: "btn btn-default navbar-btn" %>
               </li>
               <li class="nav-item">
                 <%= link_to "新規登録", new_end_user_registration_path ,class: "btn btn-default navbar-btn" %>
@@ -45,7 +45,7 @@
                 <%= link_to "マイページ", end_users_mypage_path ,class: "btn btn-default navbar-btn" %>
               </li>
               <li class="nav-item">
-                <%= link_to "商品一覧", root_path ,class: "btn btn-default navbar-btn" %>
+                <%= link_to "商品一覧", end_users_items_path ,class: "btn btn-default navbar-btn" %>
               </li>
               <li class="nav-item">
                 <%= link_to "カート", end_users_mypage_path ,class: "btn btn-default navbar-btn" %>
