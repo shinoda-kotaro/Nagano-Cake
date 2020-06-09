@@ -28,5 +28,7 @@ Rails.application.routes.draw do
     root to: "top#top"
     
     get "/end_users" , to: "end_users#index"
+    resources :items, only: [:edit, :update, :show, :index, :new, :create]
+    resources :genres, only: [:edit, :update, :index, :create]  
   end
 end

@@ -10,7 +10,7 @@ class Admins::ItemsController < Admins::Base
   end
   
   def create
-    @item = Item.find(params[:id])
+    @item = Item.new(params[:id])
   end
   
   def show
