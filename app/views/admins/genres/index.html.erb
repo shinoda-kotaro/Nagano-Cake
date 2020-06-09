@@ -1,0 +1,56 @@
+<div class="col-sm-6 col-sm-offset-6">
+  <h1>ジャンル一覧・追加</h1>
+  <%= form_for @genre do |f| %>
+  <%= render 'layouts/error_messages', f: f.object %>
+  <table class="table">
+    <tr>
+      <td>ジャンル</td>
+      <td>
+        <div class="form-group">
+          <%= f.label :name , "必須" , class: "sr-only" %>
+          <%= f.text_field :name, class: "form-control" , autofocus: true, autocomplete: "ジャンル名" %>
+        </div>
+      </td>
+      <td>
+        <div class="form-group">
+          <%= form.radio_button :is_effective, :true %>
+          <%= form.label :is_effective, "有効", {value: :true, style: "display: inline-block;"} %>
+          <%= form.radio_button :gender, :female %>
+          <%= form.label :is_effective, "無効", {value: :false, style: "display: inline-block;"} %>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="form-group">
+    <%= f.submit '追加', class: 'btn btn-primary' %>
+  </div>
+
+  <% end %>
+
+  <table class="table">
+    <tr>
+      <th>ジャンル</th>
+      <th>状態</th>
+      <th></th>
+    </tr>
+    <%= @genres.each |genre| do %>
+    <tr>
+      <td>
+        <%= genre.name %>
+      </td>
+      <td>
+        <% if genre.is_effective? %>
+        <p>有効</p>
+        <% else %>
+        <p>無効</p>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to "編集する", edit_admins_genre_path , class: "btn btn-primary" %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+</div>
