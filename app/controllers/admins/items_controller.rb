@@ -10,11 +10,19 @@ class Admins::ItemsController < Admins::Base
   end
   
   def create
-    @item = Item.new(params[:id])
+    @item = Item.new(item_params)
+    if @item.save
+      flash[:success] = "Object successfully created"
+      redirect_to admins_items_path
+    else
+      flash[:error] = "Something went wrong"
+      render 'new'
+    end
   end
   
+  
   def show
-    
+    @item = Item.find(params[:id])
   end
 
   def edit
@@ -23,6 +31,12 @@ class Admins::ItemsController < Admins::Base
   
   def update
     
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :genre_id, :price, :is_sale, :image, :description)
   end
   
 end
