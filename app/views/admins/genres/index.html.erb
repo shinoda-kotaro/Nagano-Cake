@@ -1,6 +1,6 @@
 <div class="col-sm-6 col-sm-offset-3">
   <h1>ジャンル一覧・追加</h1>
-  <%= form_for(@genre , url: admins_genres_path(@genre.id)) do |f| %>
+  <%= form_for(@genre , url: admins_genres_path) do |f| %>
   <table class="table">
     <tr>
       <td>ジャンル</td>
@@ -14,10 +14,8 @@
         <div class="form-group">
           <%= f.radio_button :is_effective, true %>
           <%= f.label :is_effective, "有効" %>
-          <label>
-            <%= f.radio_button :is_effective, false %>
-            <%= f.label :is_effective, "無効" %>
-          </label>
+          <%= f.radio_button :is_effective, false %>
+          <%= f.label :is_effective, "無効" %>
         </div>
       </td>
     </tr>

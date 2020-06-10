@@ -1,8 +1,13 @@
-<div class="col-sm-6 col-sm-offset-3">
+<div class="col-sm-3 col-sm-offset-3">
   <h1>商品新規登録</h1>
 
   <%= form_for @item do |f| %>
-
+  <div class="form-group">
+    <%= f.label :image_id, "Image" %>
+    <%= f.attachment_field :image %>
+  </div>
+</div>
+<div class="col-sm-3">
   <table class="table">
     <tr>
       <td>商品名</td>
