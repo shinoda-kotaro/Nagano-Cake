@@ -13,7 +13,7 @@ class Admins::ItemsController < Admins::Base
     @item = Item.new(item_params)
     if @item.save
       flash[:success] = "Object successfully created"
-      redirect_to admins_items_path
+      redirect_to admins_item_path(@item.id)
     else
       flash[:error] = "Something went wrong"
       render 'new'
