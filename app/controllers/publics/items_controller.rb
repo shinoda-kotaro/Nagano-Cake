@@ -1,13 +1,13 @@
 class Publics::ItemsController < Publics::Base
   before_action :subscribed
-  before_action :authenticate_end_user! , except: [:top]
+  before_action :authenticate_end_user! , except: [:top , :index]
 
   def top
 
   end
 
   def index
-
+    @items = Item.where(is_sale: true)
   end
 
   def show
