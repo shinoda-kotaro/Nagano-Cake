@@ -82,3 +82,20 @@
     margin-top: 30px;
     margin-bottom: 30px;
   }
+
+  .cart_item_image_box{
+    display: inline-block;
+    height: 40px;
+    .cart_item_image{
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  .cart_item_name{
+    display: inline-block;
+  }
+
+  .cart_items_container{
+    padding-top: 50px;
+  }

@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   #-cart_items
   get "/cart_items" , to: "publics/cart_item#index"
   post "/cart_items" , to: "publics/cart_item#create"
+  patch "/cart_items/:id" , to: "publics/cart_item#update" , as: "cart_item"
+  delete "/cart_items/delete_all" , to: "publics/cart_item#all_destroy" , as: "cart_items_all_destroy"
+  delete "/cart_items/:id" , to: "publics/cart_item#destroy"
   
   #admins
   namespace :admins do

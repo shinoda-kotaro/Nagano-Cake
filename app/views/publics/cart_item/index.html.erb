@@ -1,3 +1,38 @@
 <div class="col-sm-8 col-sm-offset-2">
-
+  <h1>ショッピングカート</h1>
+  <%=  link_to "カートを空にする" , cart_items_all_destroy_path , method: :delete , class: "btn btn-danger pull-right" %>
+  <div class="cart_items_container">
+    <table class="table">
+      <tr>
+        <th>商品名</th>
+        <th>単価（税込み）</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th></th>
+      </tr>
+      <% @cart_items.each do |cart_item| %>
+      <tr>
+        <td>
+          <div class="cart_item_image_box">
+            <%= attachment_image_tag cart_item.item, :image, format: 'jpeg' , fallback: "no_image.jpg" ,class: "cart_item_image" %>
+          </div>
+          <p class="pull-right cart_item_name"><%= cart_item.item.name %></p>
+        </td>
+        <td><%= (cart_item.item.price * 1.1).to_i %></td>
+        <td>
+          <%= form_for(cart_item, url: cart_item_path(cart_item.id) ) do |f| %>
+          <div class="form-inline">
+            <div class="form-group">
+              <%= f.select :amount, array_maker(cart_item.amount) ,{ selected: cart_item.amount }, { class: 'form-control' , required: true } %>
+            </div>
+            <%= f.submit "変更" , class: "btn btn-primary" %>
+          </div>
+          <% end %>
+        </td>
+        <td><%= (cart_item.item.price * 1.1).to_i * cart_item.amount %></td>
+        <td><%= link_to "削除する", cart_item_path(cart_item.id) , method: :delete , class: "btn btn-danger" %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
