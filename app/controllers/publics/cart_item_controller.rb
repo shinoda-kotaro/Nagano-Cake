@@ -1,6 +1,7 @@
 class Publics::CartItemController < Publics::Base
   def index
     @cart_items = current_end_user.cart_items
+    @sum = 0
   end
   
 
