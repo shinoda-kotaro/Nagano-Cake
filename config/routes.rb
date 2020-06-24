@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   get "/end_users/mypage" , to: "publics/end_users#show"
   get "/end_users/check" , to: "publics/end_users#check"
   patch "/end_users/delete" , to: "publics/end_users#withdrawal"
+  #-cart_items
+  get "/cart_items" , to: "publics/cart_item#index"
+  post "/cart_items" , to: "publics/cart_item#create"
   
   #admins
   namespace :admins do

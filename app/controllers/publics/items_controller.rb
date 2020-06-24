@@ -11,8 +11,13 @@ class Publics::ItemsController < Publics::Base
   end
 
   def show
-    
+    @item = Item.find(params[:id])
+    @cart_item = CartItem.new
+    @amount = (1..10).to_a
   end
+
+  
+  
 
   private
 
@@ -23,4 +28,6 @@ class Publics::ItemsController < Publics::Base
       end
     end
   end
+
+  
 end

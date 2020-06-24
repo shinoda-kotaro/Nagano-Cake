@@ -64,7 +64,21 @@
     }
   }
 
+  .show_item_image_box{
+    width: 100%;
+    padding-top: 75%;
+    position: relative;
+    .show_item_image{
+      position: absolute;
+      object-fit: cover;
+      top: 0;
+      width: 100%;
+    }
+  }
+
   .item_description{
     width: 100%;
     word-break: normal;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }

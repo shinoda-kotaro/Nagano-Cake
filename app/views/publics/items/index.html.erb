@@ -8,7 +8,9 @@
       <div class="item_image_box">
         <%= attachment_image_tag item, :image, format: 'jpeg' , fallback: "no_image.jpg" ,class: "item_image" %>
       </div>
-      <p><%= item.name %></p>
+      <p>
+        <%= link_to item.name , end_users_item_path(item.id) %>
+      </p>
       <p>￥<%= item.price %></p>
     </div>
     <% end %>

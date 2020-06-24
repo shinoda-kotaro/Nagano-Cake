@@ -5,5 +5,6 @@ class Item < ApplicationRecord
   validates :is_sale, inclusion: { in: [true, false] }
 
   belongs_to :genre
+  has_many :cart_items
   attachment :image
 end
