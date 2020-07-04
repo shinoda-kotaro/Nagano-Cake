@@ -10,6 +10,7 @@
     <div class="item_description">
       <%= @item.description %>
     </div>
+    <h3>￥<%= (@item.price * 1.1).to_i %>（税込み）</h3>
     <%= form_for(@cart_item, url: cart_items_path ) do |f| %>
 
     <div class="row">
