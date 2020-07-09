@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   #-orders
   get "/orders/new" , to: "publics/orders#new"
   get "/orders" , to: "publics/orders#index"
+  post "orders/check" , to:"publics/orders#check" , as: "check_order_path"
   post "/orders" , to: "publics/orders#create"
   #-addresses
   get "/addresses" , to: "publics/addresses#index"

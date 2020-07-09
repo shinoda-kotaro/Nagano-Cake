@@ -1,22 +1,20 @@
 <div class="row">
-  <%= form_with model: @address url: addresses_path do |f| %>
-  <div class="col-sm-8 col-sm-offset-1">
+  <%= form_with model: @address do |f| %>
+  <div class="col-sm-8 col-sm-offset-2">
     <h1>配送先登録/一覧</h1>
     <div class="form-group">
       <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
-      <%= f.text_field :postcode %>
+      <%= f.text_field :postcode , class: "form-control" %>
     </div>
     <div class="form-group">
       <%= f.label :address, "住所" %>
-      <%= f.text_field :address %>
+      <%= f.text_field :address , class: "form-control" %>
     </div>
     <div class="form-group">
       <%= f.label :name, "宛名" %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name , class: "form-control" %>
     </div>
-  </div>
-  <div class="col-sm-2">
-    <%= f.submit "登録する", class: "btn btn-success" %>
+    <%= f.submit "登録する", class: "btn btn-success pull-right" %>
   </div>
   <% end %>
 </div>
@@ -35,10 +33,10 @@
           <%= address.postcode %>
         </td>
         <td>
-          <% address.address %>
+          <%= address.address %>
         </td>
         <td>
-          <% address.name %>
+          <%= address.name %>
         </td>
         <td>
           <%= link_to "編集する", edit_address_path(address.id) , class: "btn btn-primary" %>

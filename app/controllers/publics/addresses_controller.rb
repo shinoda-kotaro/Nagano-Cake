@@ -1,8 +1,8 @@
 class Publics::AddressesController < Publics::Base
   def index
-    @user = current_end_user.id
+    @user = EndUser.find(current_end_user.id)
     @address = Address.new
-    @addresses = @user.address.all
+    @addresses = @user.addresses.all
   end
 
   def create
@@ -36,10 +36,10 @@ class Publics::AddressesController < Publics::Base
     @address = Address.find(params[:id])
     if @address.destroy
       flash[:success] = 'Object was successfully deleted.'
-      redirect_to addressses_path
+      redirect_to addresses_path
     else
       flash[:error] = 'Something went wrong'
-      redirect_to addressses_path
+      redirect_to addresses_path
     end
   end
   
