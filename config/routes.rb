@@ -28,6 +28,16 @@ Rails.application.routes.draw do
   patch "/cart_items/:id" , to: "publics/cart_item#update" , as: "cart_item"
   delete "/cart_items/delete_all" , to: "publics/cart_item#all_destroy" , as: "cart_items_all_destroy"
   delete "/cart_items/:id" , to: "publics/cart_item#destroy"
+  #-orders
+  get "/orders/new" , to: "publics/orders#new"
+  get "/orders" , to: "publics/orders#index"
+  post "/orders" , to: "publics/orders#create"
+  #-addresses
+  get "/addresses" , to: "publics/addresses#index"
+  post "/addresses" , to: "publics/addresses#create"
+  get "/addresses/:id/edit" , to: "publics/addresses#edit" , as: "edit_address"
+  patch "/addresses/:id" , to: "publics/addresses#update" , as: "address"
+  delete "/addresses/:id" , to: "publics/addresses#destroy"
   
   #admins
   namespace :admins do

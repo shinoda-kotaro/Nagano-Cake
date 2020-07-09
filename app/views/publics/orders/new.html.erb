@@ -18,31 +18,31 @@
     <%= f.label :type, "ご自身の住所" %>
   </div>
   <div class="form-group">
-  <%= @user.postcode %> <%= @user.address %><br>
-  <%= @user.name %>
+    <%= @user.postcode %> <%= @user.address %><br>
+    <%= @user.name %>
   </div>
   <div class="radio-inline">
     <%= f.radio_button :type, :b %>
     <%= f.label :type, "登録済み住所から選択" %>
   </div>
   <div class="form-group">
-  <%= f.select  %>
+    <%= f.select  %>
   </div>
   <div class="radio-inline">
     <%= f.radio_button :type, :c %>
     <%= f.label :type, "新しいお届け先" %>
   </div>
   <div class="form-group">
-  <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
-  <%= f.text_area :postcode %>
+    <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
+    <%= f.text_field :postcode %>
   </div>
   <div class="form-group">
-  <%= f.label :address, "住所" %>
-  <%= f.text_area :address %>
+    <%= f.label :address, "住所" %>
+    <%= f.text_field :address %>
   </div>
   <div class="form-group">
-  <%= f.label :name, "宛名" %>
-  <%= f.text_area :name %>
+    <%= f.label :name, "宛名" %>
+    <%= f.text_field :name %>
   </div>
   <%= f.submit "確認画面へ進む", class: "btn btn-primary center-block" %>
   <% end %>
