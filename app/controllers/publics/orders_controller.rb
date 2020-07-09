@@ -6,6 +6,7 @@ class Publics::OrdersController < Publics::Base
 
   def check
     @order = Order.new(order_params)
+    @order.build_order_detail
     @sum = 0
     @user = EndUser.find(current_end_user.id)
     if params[:type] == 'a'
@@ -43,7 +44,7 @@ class Publics::OrdersController < Publics::Base
   private
 
   def order_params
-    params.require(:order).permit(:postcode, :address, :name)
+    params.require(:order).permit(:postcode, :address, :name, :postage, :payment_status, :order_status, :total_price, order_detail_attributes: [:price, :production_status, :amount])
   end
   
 end
