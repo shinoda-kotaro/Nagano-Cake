@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_08_141547) do
+ActiveRecord::Schema.define(version: 2020_07_09_053922) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "end_user_id", null: false
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_141547) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "end_user_id", null: false
-    t.integer "postage", null: false
+    t.integer "postage", default: 800, null: false
     t.integer "payment_status", default: 0, null: false
     t.integer "order_status", default: 0, null: false
     t.string "postcode", null: false
