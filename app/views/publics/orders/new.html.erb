@@ -3,7 +3,7 @@
   <h1>支払方法</h1>
   <div class="form-group">
     <div class="radio-inline">
-      <%= f.radio_button :payment_status, :credit %>
+      <%= f.radio_button :payment_status, :credit, checked: "checked" %>
       <%= f.label :payment_status, "クレジットカード" %>
     </div>
     <div class="radio-inline">
@@ -14,7 +14,7 @@
 
   <h1>お届け先</h1>
   <div class="radio-inline">
-    <%= f.radio_button :type, :a %>
+    <%= f.radio_button :type, :a, checked: "checked" %>
     <%= f.label :type, "ご自身の住所" %>
   </div>
   <div class="form-group">
@@ -26,7 +26,7 @@
     <%= f.label :type, "登録済み住所から選択" %>
   </div>
   <div class="form-group">
-    <%= f.select :select_address_id , @user.addresses.all.collect {|p| [ p.postcode + p.address + p.name , p.id]} , {selected: 1} , {class: "form-control" , required: true} %>
+    <%= f.select :select_address_id , @user.addresses.all.collect {|p| [ p.postcode + ' ' + p.address + ' ' + p.name , p.id]} , {selected: @user.addresses&.first.id} , {class: "form-control" , required: true} %>
   </div>
   <div class="radio-inline">
     <%= f.radio_button :type, :c %>
@@ -34,15 +34,15 @@
   </div>
   <div class="form-group">
     <%= f.label :new_postcode, "郵便番号(ハイフンなし)" %>
-    <%= f.text_field :new_postcode %>
+    <%= f.text_field :new_postcode , class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :new_address, "住所" %>
-    <%= f.text_field :new_address %>
+    <%= f.text_field :new_address , class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :new_name, "宛名" %>
-    <%= f.text_field :new_name %>
+    <%= f.text_field :new_name , class: "form-control" %>
   </div>
   <%= f.submit "確認画面へ進む", class: "btn btn-primary center-block" %>
   <% end %>

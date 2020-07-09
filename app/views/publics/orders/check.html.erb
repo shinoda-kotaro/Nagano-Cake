@@ -1,79 +1,81 @@
-<%= form_with model: @order do |f| %>
-<%= f.field_for :order_detail do |s| %>
 <div class="row">
-  <h1>注文情報確認</h1>
-  <div class="col-sm-7 col-sm-offset-1">
-    <table class="table">
-      <tr>
-        <th>商品名</th>
-        <th>単価（税込）</th>
-        <th>数量</th>
-        <th>小計</th>
-      </tr>
-      <% @cart_items.each do |cart_item| %>
-      <tr>
-        <td>
-          <div class="cart_item_image_box">
-            <%= attachment_image_tag cart_item.item, :image, format: 'jpeg' , fallback: "no_image.jpg" ,class: "cart_item_image" %>
-          </div>
-          <%= cart_item.name %>
-        </td>
-        <td>
-          <%= (cart_item.price * 1.1).to_i %>
-        </td>
-        <td>
-          <%= cart_item.amount %>
-        </td>
-        <td>
-          <%= (cart_item.price * 1.1).to_i * cart_item.amount %>
-        </td>
-      </tr>
-      <% @sum += ((cart_item.price * 1.1).to_i * cart_item.amount) %>
-      <% end %>
-    </table>
+  <%= form_with model: @order do |f| %>
+  <div class="row">
+    <h1>注文情報確認</h1>
+    <div class="col-sm-7 col-sm-offset-1">
+      <table class="table">
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+        <% @cart_items.each do |cart_item| %>
+        <%= f.fields_for :order_details do |s| %>
+        <tr>
+          <td>
+            <div class="cart_item_image_box">
+              <%= attachment_image_tag cart_item.item, :image, format: 'jpeg' , fallback: "no_image.jpg" , class: "cart_item_image" %>
+            </div>
+            <%= cart_item.item.name %>
+            <%= s.hidden_field :item_id , :value => cart_item.item_id %>
+          </td>
+          <td>
+            <%= (cart_item.item.price * 1.1).to_i %>
+            <%= s.hidden_field :price , :value => (cart_item.item.price * 1.1).to_i %>
+          </td>
+          <td>
+            <%= cart_item.amount %>
+            <%= s.hidden_field :amount , :value => cart_item.amount %>
+          </td>
+          <td>
+            <%= (cart_item.item.price * 1.1).to_i * cart_item.amount %>
+          </td>
+        </tr>
+        <% @sum += ((cart_item.item.price * 1.1).to_i * cart_item.amount) %>
+        <% end %>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-sm-3">
+      <table class="table">
+        <tr>
+          <th>送料</th>
+          <td><%= @order.postage %></td>
+        </tr>
+        <tr>
+          <th>商品合計</th>
+          <td><%= @sum %></td>
+        </tr>
+        <tr>
+          <th>請求金額</th>
+          <td><%= @sum + @order.postage %></td>
+        </tr>
+      </table>
+    </div>
   </div>
-  <div class="col-sm-3">
-    <table class="table">
-      <tr>
-        <th>送料</th>
-        <td><%= @order.postage %></td>
-      </tr>
-      <tr>
-        <th>商品合計</th>
-        <td><%= @sum %></td>
-      </tr>
-      <tr>
-        <th>請求金額</th>
-        <td><%= @sum + @order.postage %></td>
-      </tr>
-    </table>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+
+      <span>
+        <p>支払方法</p>
+        <% if @order.payment_status === 0 %>
+        クレジットカード
+        <% elsif @order.payment_status === 1 %>
+        銀行振込
+        <% end %>
+      </span><br>
+
+      <span>
+        <p>お届け先</p>
+        <%= @order.postcode %> <%= @order.address %> <br>
+        <%= @order.name %>
+      </span><br>
+
+      <%= f.hidden_field :total_price , :value => @sum %>
+      <%= f.submit "購入を確定する" , class: "btn btn-success block-center" %>
+
+    </div>
   </div>
+  <% end %>
 </div>
-<div class="row">
-  <div class="col-sm-8 col-sm-offset-2">
-
-    <span>
-      <p>支払方法</p>
-      <%= if @order.payment_status === 0 %>
-      クレジットカード
-      <% elsif @order.payment_status === 1 %>
-      銀行振込
-      <% end %>
-    </span><br>
-
-    <span>
-      <p>お届け先</p>
-      <%= @order.postcode %> <%= @order.address %> <br>
-      <%= @order.name %>
-    </span><br>
-
-    
-    <%= s.hidden_field : %>
-    <% end %>
-
-    <%= f.hidden_field :total_price , value => @sum %>
-    <%= f.submit "購入を確定する" , class: "btn btn-success block-center" %>
-
-  </div>
-</div>
-<% end %>

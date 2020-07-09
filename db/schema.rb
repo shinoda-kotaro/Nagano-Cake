@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_09_103336) do
+ActiveRecord::Schema.define(version: 2020_07_09_160648) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "end_user_id", null: false
@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(version: 2020_07_09_103336) do
     t.integer "total_price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address", null: false
   end
 
 end

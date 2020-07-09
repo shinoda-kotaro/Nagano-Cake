@@ -1,45 +1,45 @@
 class Publics::OrdersController < Publics::Base
   def new
-    @order = Order.new
     @user = EndUser.find(current_end_user.id)
   end
 
   def check
-    @order = Order.new(order_params)
-    @order.build_order_detail
+    @order = Order.new
+    @cart_items = current_end_user.cart_items
+    @order.order_details.build
     @sum = 0
     @user = EndUser.find(current_end_user.id)
     if params[:type] == 'a'
       @order.postcode = @user.postcode
       @order.address = @user.address
-      @order.name = (@user.first_name + @user.under_name)
+      @order.name = @user.first_name + @user.under_name
     elsif params[:type] == 'b'
-      @user.addresses = Address.find(params[:select_address_id])
-      @order.postcode = @user.addresses.postcode
-      @order.address = @user.addresses.address
-      @order.name = @user.addresses.name
+      @address = @user.addresses.find(params[:select_address_id])
+      @order.postcode = @address.postcode
+      @order.address = @address.address
+      @order.name = @address.name
     elsif params[:type] == 'c'
       @order.postcode = params[:new_postcode]
       @order.address = params[:new_address]
       @order.name = params[:new_name]
     end
-    if @order.invalid?
-      render 'new'
+    if @order.valid?
+      render action: :check
+    else
+      render action: :new
     end
   end
 
   def create
     @order = Order.new(order_params)
-    @order.end_user_id = current_end_user.id
     if @order.save
       flash[:success] = "Object successfully created"
-      redirect_to orders_path
+      redirect_to root_path
     else
       flash[:error] = "Something went wrong"
       render 'new'
     end
   end
-  
 
   private
 
