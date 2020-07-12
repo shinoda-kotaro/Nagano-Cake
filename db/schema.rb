@@ -82,12 +82,13 @@ ActiveRecord::Schema.define(version: 2020_07_09_160648) do
 
   create_table "order_details", force: :cascade do |t|
     t.integer "item_id", null: false
-    t.integer "order_id", null: false
+    t.integer "order_id"
     t.integer "price", null: false
     t.integer "production_status", default: 0, null: false
     t.integer "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_details_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|

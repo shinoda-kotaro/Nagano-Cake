@@ -1,7 +1,6 @@
 class Order < ApplicationRecord
   enum payment_status: { credit: 0 , bank: 1 }
 
-  validates :payment_status, presence: true
   validates :postcode, presence: true
   validates :address, presence: true
   validates :name, presence: true
