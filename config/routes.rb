@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   post "/orders/check" , to: "publics/orders#check" , as: "check_order"
   post "/orders" , to: "publics/orders#create"
   get "/orders/done" , to: "publics/orders#done" , as: "done_order"
+  get "/orders/:id" , to: "publics/orders#show" , as: "order"
   #-addresses
   get "/addresses" , to: "publics/addresses#index"
   post "/addresses" , to: "publics/addresses#create"

@@ -61,8 +61,8 @@ class Publics::OrdersController < Publics::Base
   end
 
   def index
-    @user = EndUser.find(current_end_user)
-    @orders = @user.order.all
+    @user = EndUser.find(current_end_user.id)
+    @orders = @user.orders.all
   end
   
   def show
