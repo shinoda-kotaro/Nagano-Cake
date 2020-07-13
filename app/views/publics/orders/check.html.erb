@@ -58,11 +58,7 @@
 
     <span>
       <h3>支払方法</h3>
-      <% if @order.payment_status == "credit" %>
-      クレジットカード
-      <% elsif @order.payment_status == "bank" %>
-      銀行振込
-      <% end %>
+      <% @order.payment_status_i18n %>
     </span><br>
     <br>
     <span>

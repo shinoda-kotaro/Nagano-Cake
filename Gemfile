@@ -66,3 +66,5 @@ gem "refile-mini_magick"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 gem 'activerecord-import'
+gem 'rails-i18n'
+gem 'enum_help' 

@@ -12,7 +12,7 @@ class Admins::OrdersController < Admins::Base
     @order = Object.find(params[:id])
       if @order.update(order_params)
         flash[:success] = "Object was successfully updated"
-        redirect_to @order
+        redirect_to 
       else
         flash[:error] = "Something went wrong"
         render 'edit'
