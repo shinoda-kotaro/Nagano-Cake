@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     
     get "/end_users" , to: "end_users#index"
     resources :items, only: [:edit, :update, :show, :index, :new, :create]
-    resources :genres, only: [:edit, :update, :index, :create]  
+    resources :genres, only: [:edit, :update, :index, :create]
+    resources :orders, only: [:index, :show, :update]
   end
 end
