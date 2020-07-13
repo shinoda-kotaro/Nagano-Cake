@@ -70,7 +70,6 @@ class Publics::OrdersController < Publics::Base
     @order_details = @order.order_details.all
   end
   
-
   private
 
   def order_params
