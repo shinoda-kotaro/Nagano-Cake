@@ -33,7 +33,4 @@ class Admins::OrdersController < Admins::Base
     params.require(:order).permit(:order_status , order_details_attributes: [:production_status , :id])
   end
 
-  def order_params2
-    params.require(:order).permit(:order_status)
-  end
 end

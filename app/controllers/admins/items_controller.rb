@@ -2,6 +2,7 @@ class Admins::ItemsController < Admins::Base
   
   def index
     @items = Item.all
+    @search_items = Item.search(params[:search])
   end
 
   def new
