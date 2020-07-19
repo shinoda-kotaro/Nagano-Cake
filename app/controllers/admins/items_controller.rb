@@ -2,7 +2,9 @@ class Admins::ItemsController < Admins::Base
   
   def index
     @items = Item.all
-    @search_items = Item.search(params[:search])
+    if params[:search]
+      @search_items = Item.search(params[:search])
+    end
   end
 
   def new
@@ -27,11 +29,17 @@ class Admins::ItemsController < Admins::Base
   end
 
   def edit
-    
+    @item = Item.find(params[:id])
+    @genres = Genre.where(is_effective: true)
   end
   
   def update
-    
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to admins_items_path
+    else
+      render 'edit'
+    end
   end
 
   private
