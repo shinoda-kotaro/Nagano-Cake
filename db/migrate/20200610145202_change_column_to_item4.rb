@@ -3,6 +3,6 @@ class ChangeColumnToItem4 < ActiveRecord::Migration[5.2]
     change_column :items, :image_id, :string
   end
   def down
-    change_column :items, :image_id, :boolean
+    change_column :items, :image_id, :string
   end
 end
